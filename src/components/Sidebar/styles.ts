@@ -7,8 +7,6 @@ interface ContainerProps {
 export const Container = styled.aside<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.red};
 
-  width: 7.75rem;
-
   ${({ isMenuOpen }) =>
     isMenuOpen
       ? css`
@@ -92,6 +90,54 @@ export const Container = styled.aside<ContainerProps>`
 
           span {
             color: ${({ theme }) => theme.colors.yellow};
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+
+    width: 100%;
+    height: 5rem;
+    overflow-y: auto;
+    padding: 0 0;
+
+    button {
+      display: none;
+    }
+
+    nav {
+      height: 100%;
+
+      ul {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      li {
+        a {
+          flex-direction: column;
+          padding: 0rem;
+
+          svg {
+            width: 3.25rem;
+            height: 3.25rem;
+          }
+
+          span {
+            display: none;
+          }
+
+          &.active {
+            &::after {
+              display: none;
+            }
           }
         }
       }
