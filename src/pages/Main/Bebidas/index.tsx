@@ -1,8 +1,25 @@
+import { useState, useEffect } from 'react'
+
 import { Head } from '../../../components/Head'
 import { Snacks } from '../../../components/Snacks'
 import { SnackTitle } from '../../../components/SnackTitle'
 
+import { getBBebidas } from '../../../services/api'
+
+
 export default function Bebidas() {
+
+  const [bebidas, setBebidas] = useState([])
+
+  useEffect(() => {
+    (async () => {
+      const bebidasRequest = await getBBebidas()
+
+      setBebidas(bebidasRequest.data)
+    })()
+  }, [])
+
+
   const data = [
     {
       id: 1,
@@ -35,7 +52,7 @@ export default function Bebidas() {
     <>
       <Head title='Bebidas' />
       <SnackTitle>Bebidas</SnackTitle>
-      <Snacks snacks={data}></Snacks>
+      <Snacks snacks={bebidas}></Snacks>
     </>
   )
 }
