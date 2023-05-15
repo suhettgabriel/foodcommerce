@@ -5,10 +5,11 @@ import { Snacks } from '../../../components/Snacks'
 import { SnackTitle } from '../../../components/SnackTitle'
 
 import { getSobremesas } from '../../../services/api'
+import { SnackData } from '../../../interfaces/SnackData'
 
 export default function Sobremesas() {
 
-  const [Sobremesas, setSobremesas] = useState([])
+  const [Sobremesas, setSobremesas] = useState<SnackData[]>([])
 
   useEffect(() => {
     (async () => {
